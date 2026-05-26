@@ -3,107 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>新疆棉主题网站</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <title>丝路棉韵 · 首页</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#" class="brand">
-          <span class="brand-badge">新疆棉</span>
-          <span class="brand-sub">XINJIANG COTTON</span>
-        </a>
+  <body data-page="home" id="top">
+    <header class="site-header" id="site-header"></header>
 
-        <nav class="main-nav">
-          <ul>
-            <li><a href="#">首页</a></li>
-            <li><a href="#about">关于新疆棉</a></li>
-            <li class="has-dropdown">
-              <a href="#products">产品中心</a>
-              <ul class="dropdown">
-                <li><a href="#">原棉系列</a></li>
-                <li><a href="#">纱线系列</a></li>
-                <li><a href="#">面料系列</a></li>
-                <li><a href="#">成衣系列</a></li>
-              </ul>
-            </li>
-            <li><a href="#industry">产业链建设</a></li>
-            <li><a href="#news">新闻与活动</a></li>
-            <li><a href="#contact">联系我们</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero">
+    <main class="page-main">
+      <section class="hero" aria-label="首屏">
         <div class="hero-left">
           <div class="hero-card">
             <p class="hero-tag">2026 · 新疆棉主题站</p>
-            <h1>一朵好棉，织就品质生活</h1>
-            <p>
-              以新疆优质长绒棉为核心，展示从田间到纺织品的全链路能力。
-              这一版先完成首页基础布局，后续可以按模块继续扩展。
+            <h1>一朵好棉，织就中国品质生活</h1>
+            <p class="hero-lead">
+              以新疆优质长绒棉为核心，全链路呈现从棉田到纺织品的中国智造实力。
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#about">了解更多</a>
-              <a class="btn btn-ghost" href="#products">查看产品</a>
+              <a class="btn btn-primary" href="./pages/about.html">了解新疆棉</a>
+              <a class="btn btn-ghost" href="./pages/products.html">查看产品中心</a>
             </div>
           </div>
         </div>
-
         <div class="hero-right">
           <div class="slogan">
             <p class="slogan-top">新疆棉</p>
-            <p class="slogan-main">棉花品质好，<br />纺织品质更好</p>
+            <p class="slogan-main">从棉田到织机<br />品质看得见</p>
           </div>
         </div>
       </section>
 
-      <section id="about" class="section container">
-        <h2>关于新疆棉</h2>
-        <p>
-          这里是内容占位区域。你后续可补充产地优势、气候条件、种植管理、
-          纤维长度、白度、强力等内容。
-        </p>
-      </section>
-
-      <section id="products" class="section section-alt">
+      <section id="documentary" class="section section-alt" aria-label="纪录片专区">
         <div class="container">
-          <h2>产品中心</h2>
-          <div class="cards">
-            <article class="card">
-              <h3>原棉</h3>
-              <p>用于展示等级、产地、检测指标等信息。</p>
-            </article>
-            <article class="card">
-              <h3>纱线</h3>
-              <p>用于展示支数、捻度、用途等信息。</p>
-            </article>
-            <article class="card">
-              <h3>面料/成衣</h3>
-              <p>用于展示产品规格、应用场景、图片等信息。</p>
-            </article>
+          <div class="section-head">
+            <h2>纪录片专区</h2>
+            <p>新疆棉全产业链纪实视频，呈现从种植、采摘、加工到智造的全流程。</p>
+          </div>
+          <div class="doc-block">
+            <div class="video-wrap">
+              <div class="video-placeholder" role="img" aria-label="视频占位">
+                新疆棉全产业链纪实视频（可替换为正式播放地址）
+              </div>
+            </div>
+            <div>
+              <h3>从棉田到纺织品</h3>
+              <p>
+                镜头跟随新疆长绒棉的生长季与产业链上下游，记录优质原料如何转化为
+                家居、出行与文创产品，展现中国纺织智造的温度与实力。
+              </p>
+              <p style="margin-top: 12px; color: var(--muted); font-size: 14px">
+                提示：将上方占位区域替换为 &lt;video&gt; 或 iframe 嵌入即可上线正式片源。
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="industry" class="section container">
-        <h2>产业链建设</h2>
-        <p>这里可加入时间线、地图、合作企业、智能工厂等模块。</p>
-      </section>
-
-      <section id="news" class="section section-alt">
+      <section id="daily-xinjiang" class="section poster-section" aria-label="今日新疆">
         <div class="container">
-          <h2>新闻与活动</h2>
-          <p>这里可加入新闻列表、活动海报、轮播图等内容。</p>
+          <div class="poster-card" id="daily-poster">
+            <p class="poster-label">今日新疆</p>
+            <p class="poster-title">打卡海报</p>
+            <p class="poster-date" data-poster-date>—</p>
+            <p class="poster-status" data-poster-status>—</p>
+          </div>
+          <div class="poster-info">
+            <h3>棉田与新疆风景 · 每日打卡</h3>
+            <p>
+              竖版海报展示棉田与新疆风光，配以品牌文案与比赛日期。
+              赛前一周自动切换为固定比赛日期海报，便于赛事宣传与社交传播。
+            </p>
+            <p>比赛日期：2026年5月30日（可在 assets/js/main.js 中配置）</p>
+          </div>
         </div>
-      </section>
-
-      <section id="contact" class="section container">
-        <h2>联系我们</h2>
-        <p>这里可加入电话、地址、邮箱、留言表单等内容。</p>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">© 2026 丝路棉韵 · 新疆棉主题网站</div>
+    </footer>
+
+    <script src="./assets/js/nav.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
