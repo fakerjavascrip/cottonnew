@@ -536,6 +536,11 @@
             ${prod.weight !== "—" ? `<div><dt>毛重</dt><dd>${escapeHtml(prod.weight)}</dd></div>` : ""}
             <div><dt>异纤等级</dt><dd>${escapeHtml(prod.grade)}</dd></div>
           </dl>
+          <div class="trace-qr-inline" aria-label="本页溯源二维码">
+            <p class="trace-qr-title">扫码进入本页溯源</p>
+            <div id="trace-qr-mobile" class="trace-qr-box"></div>
+            <p class="trace-qr-hint">扫一扫，打开当前产品溯源页</p>
+          </div>
         </div>
       </section>
 
@@ -590,6 +595,38 @@
         </div>
       </nav>
     `;
+  }
+
+  function getTracePageUrl() {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    return url.href;
+  }
+
+  function renderQrCodes() {
+    if (typeof QRCode === "undefined") return;
+
+    const pageUrl = getTracePageUrl();
+    const baseOpts = {
+      text: pageUrl,
+      colorDark: "#111111",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M,
+    };
+
+    const mobile = document.getElementById("trace-qr-mobile");
+    if (mobile) {
+      mobile.innerHTML = "";
+      new QRCode(mobile, { ...baseOpts, width: 128, height: 128 });
+    }
+
+    const desktop = document.getElementById("trace-qr-desktop");
+    const aside = document.getElementById("trace-qr-aside");
+    if (desktop && aside) {
+      desktop.innerHTML = "";
+      new QRCode(desktop, { ...baseOpts, width: 160, height: 160 });
+      aside.hidden = false;
+    }
   }
 
   function bindInteractions(productName) {
@@ -654,6 +691,7 @@
     }
 
     bindInteractions(product.name);
+    renderQrCodes();
   }
 
   if (document.readyState === "loading") {

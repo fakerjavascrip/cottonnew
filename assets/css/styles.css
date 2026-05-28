@@ -1180,6 +1180,91 @@ img {
   padding: 0 0 24px;
 }
 
+.trace-qr-aside {
+  display: none;
+}
+
+.trace-qr-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.trace-qr-title {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.trace-qr-hint {
+  margin: 12px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.trace-qr-box {
+  display: inline-block;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  line-height: 0;
+}
+
+.trace-qr-box img,
+.trace-qr-box canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+.trace-qr-inline {
+  margin-top: 18px;
+  padding: 14px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+}
+
+.trace-qr-inline .trace-qr-title,
+.trace-qr-inline .trace-qr-hint {
+  color: #fff;
+}
+
+.trace-qr-inline .trace-qr-hint {
+  opacity: 0.88;
+}
+
+.trace-qr-inline .trace-qr-box {
+  background: #fff;
+}
+
+@media (min-width: 960px) {
+  .trace-qr-aside {
+    display: block;
+    position: fixed;
+    top: 72px;
+    left: calc(50% + 336px);
+    width: 200px;
+    z-index: 90;
+  }
+
+  .trace-qr-inline {
+    display: none;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1100px) {
+  .trace-qr-aside {
+    left: auto;
+    right: 16px;
+  }
+}
+
 .trace-loading {
   padding: 48px 20px;
   text-align: center;

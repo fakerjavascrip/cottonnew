@@ -16,6 +16,14 @@
       <span class="trace-verified" aria-label="已验证">链上存证</span>
     </header>
 
+    <aside class="trace-qr-aside" id="trace-qr-aside" aria-label="本页溯源二维码" hidden>
+      <div class="trace-qr-card">
+        <p class="trace-qr-title">扫码查看溯源</p>
+        <div id="trace-qr-desktop" class="trace-qr-box"></div>
+        <p class="trace-qr-hint">微信扫一扫，进入本产品溯源页</p>
+      </div>
+    </aside>
+
     <main class="trace-main" id="trace-root">
       <div class="trace-loading" id="trace-loading">正在加载溯源信息…</div>
     </main>
@@ -25,6 +33,7 @@
       <p class="trace-footer-id" id="trace-footer-id"></p>
     </footer>
 
+    <script src="../assets/js/qrcode.min.js"></script>
     <script src="../assets/js/trace.js"></script>
   </body>
 </html>
