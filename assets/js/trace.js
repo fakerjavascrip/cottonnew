@@ -619,17 +619,16 @@
         var img = el.querySelector("img");
         var canvas = el.querySelector("canvas");
         var table = el.querySelector("table");
-        if (img) {
+        if (img && img.src) {
           img.style.display = "block";
           img.style.width = size + "px";
           img.style.height = size + "px";
-        }
-        if (canvas) {
+          if (canvas) canvas.style.display = "none";
+        } else if (canvas) {
           canvas.style.display = "block";
           canvas.style.width = size + "px";
           canvas.style.height = size + "px";
-        }
-        if (table) {
+        } else if (table) {
           table.style.display = "inline-table";
         }
       }, 80);

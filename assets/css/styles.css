@@ -1222,16 +1222,18 @@ img {
   border-radius: 10px;
 }
 
-.trace-qr-box img,
 .trace-qr-box canvas {
-  display: block !important;
+  display: none;
+}
+
+.trace-qr-box img {
+  display: block;
   width: 128px;
   height: 128px;
   margin: 0 auto;
 }
 
-.trace-qr-aside .trace-qr-box img,
-.trace-qr-aside .trace-qr-box canvas {
+.trace-qr-aside .trace-qr-box img {
   width: 160px;
   height: 160px;
 }
