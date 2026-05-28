@@ -1184,6 +1184,10 @@ img {
   display: none;
 }
 
+.trace-qr-aside.is-ready {
+  display: none;
+}
+
 .trace-qr-card {
   background: #fff;
   border: 1px solid var(--line);
@@ -1208,17 +1212,33 @@ img {
 }
 
 .trace-qr-box {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 148px;
+  min-height: 148px;
   padding: 10px;
   background: #fff;
   border-radius: 10px;
-  line-height: 0;
 }
 
 .trace-qr-box img,
 .trace-qr-box canvas {
-  display: block;
+  display: block !important;
+  width: 128px;
+  height: 128px;
   margin: 0 auto;
+}
+
+.trace-qr-aside .trace-qr-box img,
+.trace-qr-aside .trace-qr-box canvas {
+  width: 160px;
+  height: 160px;
+}
+
+.trace-qr-box table {
+  display: inline-table !important;
+  border-collapse: collapse;
 }
 
 .trace-qr-inline {
@@ -1244,7 +1264,7 @@ img {
 }
 
 @media (min-width: 960px) {
-  .trace-qr-aside {
+  .trace-qr-aside.is-ready {
     display: block;
     position: fixed;
     top: 72px;
@@ -1259,7 +1279,7 @@ img {
 }
 
 @media (min-width: 960px) and (max-width: 1100px) {
-  .trace-qr-aside {
+  .trace-qr-aside.is-ready {
     left: auto;
     right: 16px;
   }

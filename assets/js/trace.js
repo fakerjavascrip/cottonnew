@@ -603,29 +603,57 @@
     return url.href;
   }
 
+  function renderQrIn(el, size, pageUrl) {
+    if (!el) return false;
+    el.innerHTML = "";
+    try {
+      new QRCode(el, {
+        text: pageUrl,
+        width: size,
+        height: size,
+        colorDark: "#111111",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M,
+      });
+      window.setTimeout(function () {
+        var img = el.querySelector("img");
+        var canvas = el.querySelector("canvas");
+        var table = el.querySelector("table");
+        if (img) {
+          img.style.display = "block";
+          img.style.width = size + "px";
+          img.style.height = size + "px";
+        }
+        if (canvas) {
+          canvas.style.display = "block";
+          canvas.style.width = size + "px";
+          canvas.style.height = size + "px";
+        }
+        if (table) {
+          table.style.display = "inline-table";
+        }
+      }, 80);
+      return true;
+    } catch (err) {
+      console.error("QR render failed:", err);
+      return false;
+    }
+  }
+
   function renderQrCodes() {
-    if (typeof QRCode === "undefined") return;
-
-    const pageUrl = getTracePageUrl();
-    const baseOpts = {
-      text: pageUrl,
-      colorDark: "#111111",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M,
-    };
-
-    const mobile = document.getElementById("trace-qr-mobile");
-    if (mobile) {
-      mobile.innerHTML = "";
-      new QRCode(mobile, { ...baseOpts, width: 128, height: 128 });
+    if (typeof QRCode === "undefined") {
+      console.error("qrcode.min.js not loaded");
+      return;
     }
 
-    const desktop = document.getElementById("trace-qr-desktop");
-    const aside = document.getElementById("trace-qr-aside");
-    if (desktop && aside) {
-      desktop.innerHTML = "";
-      new QRCode(desktop, { ...baseOpts, width: 160, height: 160 });
-      aside.hidden = false;
+    var pageUrl = getTracePageUrl();
+    var mobile = document.getElementById("trace-qr-mobile");
+    var desktop = document.getElementById("trace-qr-desktop");
+    var aside = document.getElementById("trace-qr-aside");
+
+    renderQrIn(mobile, 128, pageUrl);
+    if (renderQrIn(desktop, 160, pageUrl) && aside) {
+      aside.classList.add("is-ready");
     }
   }
 
