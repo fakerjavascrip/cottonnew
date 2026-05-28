@@ -9,119 +9,269 @@
   <body data-page="products">
     <header class="site-header" id="site-header"></header>
 
-    <main class="page-main">
-      <div class="page-hero">
-        <div class="container">
-          <h1>产品中心</h1>
-          <p>分层展示生活家居、便携出行、非遗文创与海内外定制四大品类，可按品类浏览具体 SKU。</p>
+    <main class="page-main products-page">
+      <nav class="product-cat-nav" aria-label="产品大类">
+        <div class="product-cat-nav-inner">
+          <button type="button" class="product-cat-item is-active" data-cat="home" aria-pressed="true">
+            <span class="cat-en">home living</span>
+            <span class="cat-cn">生活家居类</span>
+          </button>
+          <button type="button" class="product-cat-item" data-cat="travel" aria-pressed="false">
+            <span class="cat-en">travel essentials</span>
+            <span class="cat-cn">便携出行类</span>
+          </button>
+          <button type="button" class="product-cat-item" data-cat="heritage" aria-pressed="false">
+            <span class="cat-en">heritage craft</span>
+            <span class="cat-cn">非遗文创类</span>
+          </button>
+          <button type="button" class="product-cat-item" data-cat="custom" aria-pressed="false">
+            <span class="cat-en">custom orders</span>
+            <span class="cat-cn">海内外定制类</span>
+          </button>
         </div>
-      </div>
+      </nav>
 
-      <div class="container">
-        <section class="product-category" aria-label="生活家居类">
-          <h2>2.1 生活家居类</h2>
-          <p class="cat-desc">以新疆棉为核心，覆盖卧室、客厅与厨房日用场景。</p>
-          <div class="product-grid">
-            <article class="product-item" id="home-bedding">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>新疆棉四件套</h3><p>高支高密，亲肤透气，适合四季使用。</p></div>
-            </article>
-            <article class="product-item" id="home-pillow">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>棉麻抱枕</h3><p>棉麻混纺面料，挺括耐用，点缀家居空间。</p></div>
-            </article>
-            <article class="product-item" id="home-rug">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>纯棉地毯</h3><p>柔软脚感，吸尘易打理，客厅卧室皆宜。</p></div>
-            </article>
-            <article class="product-item" id="home-cloth">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>厨房纯棉抹布</h3><p>吸水性强，不掉絮，日常清洁好帮手。</p></div>
-            </article>
-            <article class="product-item" id="home-coaster">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>纯棉隔热杯垫</h3><p>隔热防烫，小巧实用，可搭配非遗纹样。</p></div>
-            </article>
-            <article class="product-item" id="home-bag">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>纯棉收纳袋</h3><p>透气防潮，衣物杂物分类收纳。</p></div>
-            </article>
-          </div>
-        </section>
+      <!-- 生活家居类 -->
+      <section class="product-panel is-active" data-panel="home" aria-label="生活家居类">
+        <div class="product-feature-hero">
+          <a class="feature-hero-main" href="#home-bedding">
+            <img
+              class="feature-hero-photo"
+              src="../data/产品图/家居/新疆棉四件套2.png"
+              alt="新疆棉四件套"
+              loading="eager"
+            />
+            <div class="feature-hero-copy">
+              <p class="feature-hero-en">Xinjiang Cotton Home</p>
+              <p class="feature-hero-cn">棉韵家居</p>
+              <p class="feature-hero-desc">以新疆棉为核心，覆盖卧室、客厅与厨房日用场景</p>
+            </div>
+          </a>
+          <a class="feature-hero-side" href="#home-pillow" aria-label="棉麻抱枕">
+            <img
+              class="feature-hero-photo"
+              src="../data/产品图/家居/棉麻抱枕.JPG"
+              alt="棉麻抱枕"
+              loading="eager"
+            />
+          </a>
+        </div>
+        <div class="product-showcase-grid">
+          <article class="showcase-item" id="home-bedding">
+            <a class="showcase-item-link" href="#home-bedding">
+              <div class="showcase-thumb">
+                <img src="../data/产品图/家居/新疆棉四件套1.png" alt="新疆棉四件套" loading="lazy" />
+              </div>
+              <p class="showcase-name">新疆棉四件套</p>
+            </a>
+            <a class="showcase-trace" href="trace.html?id=bedding">区块链溯源 →</a>
+          </article>
+          <article class="showcase-item" id="home-pillow">
+            <a class="showcase-item-link" href="#home-pillow">
+              <div class="showcase-thumb">
+                <img src="../data/产品图/家居/棉麻抱枕1.png" alt="棉麻抱枕" loading="lazy" />
+              </div>
+              <p class="showcase-name">棉麻抱枕</p>
+            </a>
+            <a class="showcase-trace" href="trace.html?id=pillow">区块链溯源 →</a>
+          </article>
+          <a class="showcase-item" id="home-rug" href="#home-rug">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/家居/浴巾.JPG" alt="纯棉地毯" loading="lazy" />
+            </div>
+            <p class="showcase-name">纯棉地毯</p>
+          </a>
+          <a class="showcase-item" id="home-cloth" href="#home-cloth">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/家居/毛巾.JPG" alt="厨房纯棉抹布" loading="lazy" />
+            </div>
+            <p class="showcase-name">厨房纯棉抹布</p>
+          </a>
+          <a class="showcase-item" id="home-coaster" href="#home-coaster">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/家居/棉麻抱枕.JPG" alt="纯棉隔热杯垫" loading="lazy" />
+            </div>
+            <p class="showcase-name">纯棉隔热杯垫</p>
+          </a>
+          <a class="showcase-item" id="home-bag" href="#home-bag">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/家居/睡衣.JPG" alt="纯棉收纳袋" loading="lazy" />
+            </div>
+            <p class="showcase-name">纯棉收纳袋</p>
+          </a>
+        </div>
+      </section>
 
-        <section class="product-category" aria-label="便携出行类">
-          <h2>2.2 便携出行类</h2>
-          <p class="cat-desc">一次性纯棉用品，轻便卫生，适合旅行与出差。</p>
-          <div class="product-grid">
-            <article class="product-item" id="travel-tissue">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>一次性棉柔巾</h3><p>柔软不掉絮，洁面卸妆均可。</p></div>
-            </article>
-            <article class="product-item" id="travel-towel">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>一次性浴巾</h3><p>加大尺寸，独立包装，出行更安心。</p></div>
-            </article>
-            <article class="product-item" id="travel-cap">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>一次性浴帽</h3><p>防水贴合，酒店居家备用。</p></div>
-            </article>
-            <article class="product-item" id="travel-hand-towel">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>一次性毛巾</h3><p>纯棉材质，洁净亲肤。</p></div>
-            </article>
-            <article class="product-item" id="travel-pad">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>便携化妆棉</h3><p>小巧便携，卸妆护肤两用。</p></div>
-            </article>
-          </div>
-        </section>
+      <!-- 便携出行类 -->
+      <section class="product-panel" data-panel="travel" aria-label="便携出行类" hidden>
+        <div class="product-feature-hero">
+          <a class="feature-hero-main" href="#travel-towel">
+            <img
+              class="feature-hero-photo"
+              src="../data/产品图/便携/一次性浴巾.png"
+              alt="一次性浴巾"
+              loading="lazy"
+            />
+            <div class="feature-hero-copy">
+              <p class="feature-hero-en">On-the-Go Cotton</p>
+              <p class="feature-hero-cn">轻装出行</p>
+              <p class="feature-hero-desc">一次性纯棉用品，轻便卫生，适合旅行与出差</p>
+            </div>
+          </a>
+          <a class="feature-hero-side" href="#travel-tissue" aria-label="一次性棉柔巾">
+            <img
+              class="feature-hero-photo"
+              src="../data/产品图/便携/一次性棉柔巾.png"
+              alt="一次性棉柔巾"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <div class="product-showcase-grid">
+          <article class="showcase-item" id="travel-tissue">
+            <a class="showcase-item-link" href="#travel-tissue">
+              <div class="showcase-thumb">
+                <img src="../data/产品图/便携/一次性棉柔巾.png" alt="一次性棉柔巾" loading="lazy" />
+              </div>
+              <p class="showcase-name">一次性棉柔巾</p>
+            </a>
+            <a class="showcase-trace" href="trace.html?id=tissue">区块链溯源 →</a>
+          </article>
+          <a class="showcase-item" id="travel-towel" href="#travel-towel">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/便携/一次性浴巾.png" alt="一次性浴巾" loading="lazy" />
+            </div>
+            <p class="showcase-name">一次性浴巾</p>
+          </a>
+          <a class="showcase-item" id="travel-cap" href="#travel-cap">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/便携/一次性干发帽.png" alt="一次性浴帽" loading="lazy" />
+            </div>
+            <p class="showcase-name">一次性浴帽</p>
+          </a>
+          <a class="showcase-item" id="travel-hand-towel" href="#travel-hand-towel">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/便携/一次性洗脸巾.png" alt="一次性毛巾" loading="lazy" />
+            </div>
+            <p class="showcase-name">一次性毛巾</p>
+          </a>
+          <a class="showcase-item" id="travel-pad" href="#travel-pad">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/便携/便携化妆棉.png" alt="便携化妆棉" loading="lazy" />
+            </div>
+            <p class="showcase-name">便携化妆棉</p>
+          </a>
+        </div>
+      </section>
 
-        <section class="product-category" aria-label="非遗文创类">
-          <h2>2.3 非遗文创类</h2>
-          <p class="cat-desc">融合艾德莱斯纹样与非遗工艺，兼具实用与收藏价值。</p>
-          <div class="product-grid">
-            <article class="product-item" id="heritage-coaster">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>杯垫</h3><p>非遗纹样杯垫，隔热防滑。</p></div>
-            </article>
-            <article class="product-item" id="heritage-placemat">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>餐垫</h3><p>餐桌美学点缀，易擦洗。</p></div>
-            </article>
-            <article class="product-item" id="heritage-art">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>艾德莱斯桌面摆画</h3><p>桌面装饰，展现丝路色彩。</p></div>
-            </article>
-            <article class="product-item" id="heritage-tissue-bag">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>艾德莱斯纸巾袋</h3><p>收纳纸巾，纹样别致。</p></div>
-            </article>
-            <article class="product-item" id="heritage-headband">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>发带</h3><p>艾德莱斯元素，日常穿搭点睛。</p></div>
-            </article>
-            <article class="product-item" id="heritage-lid-cover">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>防烫隔热锅盖帽</h3><p>厨房防烫，布艺温馨。</p></div>
-            </article>
-          </div>
-        </section>
+      <!-- 非遗文创类 -->
+      <section class="product-panel" data-panel="heritage" aria-label="非遗文创类" hidden>
+        <div class="product-feature-hero">
+          <a class="feature-hero-main" href="#heritage-art">
+            <img
+              class="feature-hero-photo"
+              src="../data/产品图/文创/艾德莱斯桌面摆画.png"
+              alt="艾德莱斯桌面摆画"
+              loading="lazy"
+            />
+            <div class="feature-hero-copy">
+              <p class="feature-hero-en">Atlas Heritage</p>
+              <p class="feature-hero-cn">艾德莱斯文创</p>
+              <p class="feature-hero-desc">融合艾德莱斯纹样与非遗工艺，兼具实用与收藏价值</p>
+            </div>
+          </a>
+          <a class="feature-hero-side" href="#heritage-coaster" aria-label="艾德莱斯杯垫">
+            <img
+              class="feature-hero-photo"
+              src="../data/产品图/文创/艾德莱斯杯垫.png"
+              alt="艾德莱斯杯垫"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <div class="product-showcase-grid">
+          <a class="showcase-item" id="heritage-coaster" href="#heritage-coaster">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/文创/艾德莱斯杯垫.png" alt="杯垫" loading="lazy" />
+            </div>
+            <p class="showcase-name">杯垫</p>
+          </a>
+          <a class="showcase-item" id="heritage-placemat" href="#heritage-placemat">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/文创/艾德莱斯餐垫.png" alt="餐垫" loading="lazy" />
+            </div>
+            <p class="showcase-name">餐垫</p>
+          </a>
+          <article class="showcase-item" id="heritage-art">
+            <a class="showcase-item-link" href="#heritage-art">
+              <div class="showcase-thumb">
+                <img src="../data/产品图/文创/艾德莱斯桌面摆画.png" alt="艾德莱斯桌面摆画" loading="lazy" />
+              </div>
+              <p class="showcase-name">艾德莱斯桌面摆画</p>
+            </a>
+            <a class="showcase-trace" href="trace.html?id=art">区块链溯源 →</a>
+          </article>
+          <article class="showcase-item" id="heritage-tissue-bag">
+            <a class="showcase-item-link" href="#heritage-tissue-bag">
+              <div class="showcase-thumb">
+                <img src="../data/产品图/文创/艾德莱斯餐巾纸定位.png" alt="艾德莱斯纸巾袋" loading="lazy" />
+              </div>
+              <p class="showcase-name">艾德莱斯纸巾袋</p>
+            </a>
+            <a class="showcase-trace" href="trace.html?id=tissue-bag">区块链溯源 →</a>
+          </article>
+          <a class="showcase-item" id="heritage-headband" href="#heritage-headband">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/文创/艾德莱斯发带.png" alt="发带" loading="lazy" />
+            </div>
+            <p class="showcase-name">发带</p>
+          </a>
+          <a class="showcase-item" id="heritage-lid-cover" href="#heritage-lid-cover">
+            <div class="showcase-thumb showcase-thumb--placeholder" aria-hidden="true"></div>
+            <p class="showcase-name">防烫隔热锅盖帽</p>
+          </a>
+        </div>
+      </section>
 
-        <section class="product-category" aria-label="海内外定制类">
-          <h2>2.4 海内外定制类</h2>
-          <p class="cat-desc">支持企业与机构批量定制，满足品牌传播与活动赠礼需求。</p>
-          <div class="product-grid">
-            <article class="product-item" id="custom-tee">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>基础款白T</h3><p>新疆棉面料，可印绣 logo，适合团体定制。</p></div>
-            </article>
-            <article class="product-item" id="custom-tote">
-              <div class="product-thumb">产品图</div>
-              <div class="product-body"><h3>帆布袋</h3><p>企业/机构批量定制，环保耐用，传播品牌理念。</p></div>
-            </article>
-          </div>
-        </section>
-      </div>
+      <!-- 海内外定制类 -->
+      <section class="product-panel" data-panel="custom" aria-label="海内外定制类" hidden>
+        <div class="product-feature-hero">
+          <a class="feature-hero-main" href="#custom-tee">
+            <img class="feature-hero-photo" src="../data/产品图/定制/T恤.JPG" alt="基础款白T" loading="lazy" />
+            <div class="feature-hero-copy">
+              <p class="feature-hero-en">Bulk Custom</p>
+              <p class="feature-hero-cn">企业定制</p>
+              <p class="feature-hero-desc">支持企业与机构批量定制，满足品牌传播与活动赠礼需求</p>
+            </div>
+          </a>
+          <a class="feature-hero-side" href="#custom-tote" aria-label="帆布袋定制">
+            <img class="feature-hero-photo" src="../data/产品图/定制/帆布袋.JPG" alt="帆布袋" loading="lazy" />
+          </a>
+        </div>
+        <div class="product-showcase-grid product-showcase-grid--few">
+          <article class="showcase-item" id="custom-tee">
+            <a class="showcase-item-link" href="#custom-tee">
+              <div class="showcase-thumb">
+                <img src="../data/产品图/定制/T恤.JPG" alt="基础款白T" loading="lazy" />
+              </div>
+              <p class="showcase-name">基础款白T</p>
+            </a>
+            <a class="showcase-trace" href="trace.html?id=tee">区块链溯源 →</a>
+          </article>
+          <a class="showcase-item" id="custom-tote" href="#custom-tote">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/定制/帆布袋.JPG" alt="帆布袋" loading="lazy" />
+            </div>
+            <p class="showcase-name">帆布袋</p>
+          </a>
+          <a class="showcase-item showcase-item--wide" href="contact.html">
+            <div class="showcase-thumb">
+              <img src="../data/产品图/定制/帆布袋.JPG" alt="咨询批量定制" loading="lazy" />
+            </div>
+            <p class="showcase-name">咨询批量定制 →</p>
+          </a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
