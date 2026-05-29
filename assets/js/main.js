@@ -70,10 +70,10 @@
     heritage: [
       "heritage-coaster",
       "heritage-placemat",
-      "heritage-art",
       "heritage-tissue-bag",
       "heritage-headband",
       "heritage-lid-cover",
+      "heritage-art",
     ],
     custom: ["custom-tee", "custom-tote"],
   };

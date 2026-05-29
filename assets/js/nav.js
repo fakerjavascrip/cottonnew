@@ -45,12 +45,12 @@
         {
           title: "非遗文创类",
           items: [
-            { label: "杯垫", href: `${root}/pages/products.html#heritage-coaster` },
-            { label: "餐垫", href: `${root}/pages/products.html#heritage-placemat` },
+            { label: "艾德莱斯杯垫", href: `${root}/pages/products.html#heritage-coaster` },
+            { label: "艾德莱斯餐垫", href: `${root}/pages/products.html#heritage-placemat` },
+            { label: "艾德莱斯餐巾纸定位", href: `${root}/pages/products.html#heritage-tissue-bag` },
+            { label: "艾德莱斯发带", href: `${root}/pages/products.html#heritage-headband` },
+            { label: "艾德莱斯锅盖隔热把手", href: `${root}/pages/products.html#heritage-lid-cover` },
             { label: "艾德莱斯桌面摆画", href: `${root}/pages/products.html#heritage-art` },
-            { label: "艾德莱斯纸巾袋", href: `${root}/pages/products.html#heritage-tissue-bag` },
-            { label: "发带", href: `${root}/pages/products.html#heritage-headband` },
-            { label: "防烫隔热锅盖帽", href: `${root}/pages/products.html#heritage-lid-cover` },
           ],
         },
         {
