@@ -54,7 +54,7 @@
           ],
         },
         {
-          title: "海内外定制类",
+          title: "企业定制类",
           items: [
             { label: "基础款白T", href: `${root}/pages/products.html#custom-tee` },
             { label: "帆布袋（企业/机构批量定制）", href: `${root}/pages/products.html#custom-tote` },
@@ -89,7 +89,6 @@
       children: [
         { label: "乡村全面振兴意见", href: `${root}/pages/policy.html#rural` },
         { label: "纺织服装产业规划", href: `${root}/pages/policy.html#industry` },
-        { label: "跨境电商出口退税", href: `${root}/pages/policy.html#export` },
       ],
     },
     { label: "联系我们", href: `${root}/pages/contact.html`, page: "contact" },

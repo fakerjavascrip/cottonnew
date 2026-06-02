@@ -14,7 +14,6 @@
     { label: "第三方质检报告", file: "质检报告.pdf" },
     { label: "新疆棉产地证明", file: "产地证明.pdf" },
     { label: "碳足迹核算报告", file: "碳足迹报告.pdf" },
-    { label: "跨境出口合规文件", file: "出口合规.pdf" },
   ];
 
   const PRODUCTS = {
@@ -693,16 +692,16 @@
           facts: [
             "检测机构：新疆纺织服装产品质量检测中心",
             "合格编号：XJ-FZ-2026-0118-5560",
-            "附出口合规文件包（B 端报关可用）",
+            "附质检与产地证明文件包（企业批量采购可用）",
           ],
         },
       ],
       diary: {
         title: "棉农日记 · 一件白T",
-        text: "企业订制的白T，要求每一批棉都能溯源。我说没问题，扫码从棉田看到成衣，出海报关也有据可查。",
+        text: "企业订制的白T，要求每一批棉都能溯源。我说没问题，扫码从棉田看到成衣，品质有据可查。",
       },
       brandStory:
-        "基础款白T是品牌传播的载体。以可溯源新疆棉，助力企业履行社会责任叙事与跨境合规。",
+        "基础款白T是品牌传播的载体。以可溯源新疆棉，助力企业履行社会责任叙事与品质承诺。",
     },
   };
 
@@ -849,7 +848,7 @@
         <h3 class="trace-subtitle">新疆棉核心品质指标</h3>
         ${renderQuality(COMMON_QUALITY)}
         <h3 class="trace-subtitle">权威合规文件</h3>
-        <p class="trace-section-lead">支持下载，B 端客户可用于报关与合规审查（演示占位）</p>
+        <p class="trace-section-lead">支持下载，可用于品质与合规审查（演示占位）</p>
         ${renderDocs(COMMON_DOCS, p.name)}
       </section>
 
