@@ -1,6 +1,13 @@
 (function () {
   const ROOT = document.documentElement.dataset.root || "..";
   const IMG = `${ROOT}/data/产品图`;
+  const TRACE_IMG = `${ROOT}/data/溯源图`;
+
+  const TIMELINE_STAGE_IMG = {
+    棉田种植: `${TRACE_IMG}/棉田种植.jpeg`,
+    轧花加工: `${TRACE_IMG}/轧花加工.jpeg`,
+    纺纱织造: `${TRACE_IMG}/纺纱织造.jpeg`,
+  };
 
   const COMMON_QUALITY = [
     { name: "纤维长度", value: "38.5mm", note: "远超国标长绒棉 35mm 标准，更柔软、更耐用" },
@@ -721,6 +728,10 @@
       .replace(/"/g, "&quot;");
   }
 
+  function timelineImage(node) {
+    return TIMELINE_STAGE_IMG[node.title] || node.image;
+  }
+
   function renderTimeline(nodes) {
     return `<ol class="trace-timeline">
       ${nodes
@@ -732,7 +743,7 @@
               <h3>${escapeHtml(n.title)}</h3>
               <time datetime="${escapeHtml(n.time)}">上链 ${escapeHtml(n.chainTime || n.time)}</time>
             </header>
-            <img class="trace-timeline-img" src="${escapeHtml(n.image)}" alt="${escapeHtml(n.title)}" loading="lazy" />
+            <img class="trace-timeline-img" src="${escapeHtml(timelineImage(n))}" alt="${escapeHtml(n.title)}" loading="lazy" />
             <ul class="trace-facts">${n.facts.map((f) => `<li>${escapeHtml(f)}</li>`).join("")}</ul>
           </article>
         </li>`
