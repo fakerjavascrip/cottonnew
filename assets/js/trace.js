@@ -23,6 +23,26 @@
     { label: "碳足迹核算报告", file: "碳足迹报告.pdf" },
   ];
 
+  const DOUYIN_SHARE_IMG = `${ROOT}/data/分享/抖音店铺分享图.png`;
+
+  const CERT_DIR = `${ROOT}/data/资质`;
+  const CERT_REPORT = {
+    reportNo: "BV2026QD0759",
+    agency: "广州必维技术检测有限公司（Bureau Veritas）",
+    product: "纯棉纺织品",
+    conclusion: "所检项目全部符合要求",
+    standards: "GB18401-2010、GB/T22849-2014",
+    issueDate: "2026-04-23",
+    pages: [
+      { file: "检测报告-1.png", label: "封面" },
+      { file: "检测报告-2.png", label: "检验结论" },
+      { file: "检测报告-3.png", label: "检测数据" },
+      { file: "检测报告-4.png", label: "化学安全" },
+      { file: "检测报告-5.png", label: "样品图片" },
+      { file: "检测报告-6.png", label: "注意事项" },
+    ],
+  };
+
   const PRODUCTS = {
     bedding: {
       name: "新疆长绒棉四件套",
@@ -788,6 +808,48 @@
     </ul>`;
   }
 
+  function renderCertification() {
+    const c = CERT_REPORT;
+    return `<div class="trace-cert" id="certification">
+      <dl class="trace-cert-summary">
+        <div><dt>检测机构</dt><dd>${escapeHtml(c.agency)}</dd></div>
+        <div><dt>报告编号</dt><dd>${escapeHtml(c.reportNo)}</dd></div>
+        <div><dt>检验结论</dt><dd><span class="trace-cert-pass">${escapeHtml(c.conclusion)}</span></dd></div>
+        <div><dt>依据标准</dt><dd>${escapeHtml(c.standards)}</dd></div>
+        <div><dt>签发日期</dt><dd>${escapeHtml(c.issueDate)}</dd></div>
+      </dl>
+      <div class="trace-cert-gallery" role="list" aria-label="检测报告全文">
+        ${c.pages
+          .map(
+            (p, i) => `<button
+            type="button"
+            class="trace-cert-thumb"
+            role="listitem"
+            data-cert-index="${i}"
+            aria-label="查看检测报告第 ${i + 1} 页：${escapeHtml(p.label)}"
+          >
+            <img src="${escapeHtml(`${CERT_DIR}/${p.file}`)}" alt="检测报告 ${i + 1}：${escapeHtml(p.label)}" loading="lazy" />
+            <span class="trace-cert-thumb-label">${escapeHtml(p.label)}</span>
+          </button>`
+          )
+          .join("")}
+      </div>
+      <p class="trace-cert-note">CNAS L3841 · ilac-MRA 国际互认 · 点击缩略图可放大查看完整报告</p>
+    </div>
+    <div class="trace-cert-lightbox" id="cert-lightbox" hidden aria-hidden="true">
+      <div class="trace-cert-lightbox-backdrop" data-cert-close></div>
+      <div class="trace-cert-lightbox-panel" role="dialog" aria-modal="true" aria-label="检测报告大图">
+        <button type="button" class="trace-cert-lightbox-close" data-cert-close aria-label="关闭">×</button>
+        <button type="button" class="trace-cert-lightbox-nav trace-cert-lightbox-prev" data-cert-prev aria-label="上一页">‹</button>
+        <figure class="trace-cert-lightbox-figure">
+          <img id="cert-lightbox-img" src="" alt="" />
+          <figcaption id="cert-lightbox-caption"></figcaption>
+        </figure>
+        <button type="button" class="trace-cert-lightbox-nav trace-cert-lightbox-next" data-cert-next aria-label="下一页">›</button>
+      </div>
+    </div>`;
+  }
+
   function renderHeritage(h) {
     if (!h) return "";
     return `<section class="trace-section trace-heritage-extra" id="heritage-detail">
@@ -809,6 +871,28 @@
           )
           .join("")}
       </ul>
+    </section>`;
+  }
+
+  function renderDouyinShare() {
+    return `<section class="trace-section trace-section-alt" id="douyin-shop">
+      <h2 class="trace-section-title">关注抖音店铺</h2>
+      <p class="trace-section-lead">保存下方分享图，打开抖音扫一扫，即可找到「丝路棉韵」官方店铺</p>
+      <div class="trace-douyin-card">
+        <img
+          class="trace-douyin-img"
+          id="douyin-share-img"
+          src="${escapeHtml(DOUYIN_SHARE_IMG)}"
+          alt="丝路棉韵抖音店铺分享图，含店铺二维码"
+          loading="lazy"
+        />
+        <div class="trace-douyin-steps">
+          <p><span class="trace-douyin-step-num">1</span>保存图片到相册</p>
+          <p><span class="trace-douyin-step-num">2</span>打开抖音 · 扫一扫</p>
+          <p><span class="trace-douyin-step-num">3</span>识别图中二维码，进入店铺</p>
+        </div>
+        <button type="button" class="trace-douyin-save" id="btn-save-douyin">保存分享图</button>
+      </div>
     </section>`;
   }
 
@@ -858,8 +942,11 @@
         <h2 class="trace-section-title">品质硬实力</h2>
         <h3 class="trace-subtitle">新疆棉核心品质指标</h3>
         ${renderQuality(COMMON_QUALITY)}
+        <h3 class="trace-subtitle">第三方检测资质</h3>
+        <p class="trace-section-lead">必维（Bureau Veritas）权威检测报告，扫码溯源品质有据可查</p>
+        ${renderCertification()}
         <h3 class="trace-subtitle">权威合规文件</h3>
-        <p class="trace-section-lead">支持下载，可用于品质与合规审查（演示占位）</p>
+        <p class="trace-section-lead">支持下载，可用于品质与合规审查</p>
         ${renderDocs(COMMON_DOCS, p.name)}
       </section>
 
@@ -877,6 +964,8 @@
         </article>
       </section>
 
+      ${renderDouyinShare()}
+
       <section class="trace-section trace-actions-section" id="actions">
         <h2 class="trace-section-title">互动功能</h2>
         <div class="trace-actions">
@@ -887,8 +976,8 @@
         <p class="trace-action-hint" id="action-hint" hidden></p>
       </section>
 
-      <nav class="trace-switcher" aria-label="切换演示产品">
-        <p class="trace-switcher-label">演示：切换其他产品溯源</p>
+      <nav class="trace-switcher" aria-label="切换其他产品">
+        <p class="trace-switcher-label">切换其他产品溯源</p>
         <div class="trace-switcher-links">
           ${Object.entries(PRODUCTS)
             .map(
@@ -960,11 +1049,105 @@
     }
   }
 
+  function bindCertLightbox() {
+    const lightbox = document.getElementById("cert-lightbox");
+    const img = document.getElementById("cert-lightbox-img");
+    const caption = document.getElementById("cert-lightbox-caption");
+    if (!lightbox || !img || !caption) return;
+
+    let currentIndex = 0;
+
+    function showPage(index) {
+      const page = CERT_REPORT.pages[index];
+      if (!page) return;
+      currentIndex = index;
+      img.src = `${CERT_DIR}/${page.file}`;
+      img.alt = `检测报告 ${index + 1}：${page.label}`;
+      caption.textContent = `第 ${index + 1} 页 / 共 ${CERT_REPORT.pages.length} 页 · ${page.label} · 报告编号 ${CERT_REPORT.reportNo}`;
+    }
+
+    function openLightbox(index) {
+      showPage(index);
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("trace-cert-open");
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("trace-cert-open");
+    }
+
+    document.querySelectorAll(".trace-cert-thumb").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openLightbox(Number(btn.dataset.certIndex) || 0);
+      });
+    });
+
+    lightbox.querySelectorAll("[data-cert-close]").forEach((el) => {
+      el.addEventListener("click", closeLightbox);
+    });
+
+    lightbox.querySelector("[data-cert-prev]")?.addEventListener("click", () => {
+      const next = (currentIndex - 1 + CERT_REPORT.pages.length) % CERT_REPORT.pages.length;
+      showPage(next);
+    });
+
+    lightbox.querySelector("[data-cert-next]")?.addEventListener("click", () => {
+      const next = (currentIndex + 1) % CERT_REPORT.pages.length;
+      showPage(next);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") {
+        showPage((currentIndex - 1 + CERT_REPORT.pages.length) % CERT_REPORT.pages.length);
+      }
+      if (e.key === "ArrowRight") {
+        showPage((currentIndex + 1) % CERT_REPORT.pages.length);
+      }
+    });
+  }
+
+  function bindDouyinShare() {
+    const btn = document.getElementById("btn-save-douyin");
+    const img = document.getElementById("douyin-share-img");
+    const hint = document.getElementById("action-hint");
+    if (!btn || !img) return;
+
+    function showHint(msg) {
+      if (!hint) return;
+      hint.textContent = msg;
+      hint.hidden = false;
+    }
+
+    btn.addEventListener("click", async () => {
+      try {
+        const res = await fetch(img.src);
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "丝路棉韵-抖音店铺分享图.png";
+        a.click();
+        URL.revokeObjectURL(url);
+        showHint("分享图已保存，请打开抖音扫一扫识别图中二维码。");
+      } catch {
+        showHint("请长按上方图片保存到相册，再打开抖音扫一扫。");
+      }
+    });
+  }
+
   function bindInteractions(productName) {
+    bindCertLightbox();
+    bindDouyinShare();
+
     document.querySelectorAll(".trace-doc-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const file = btn.dataset.doc;
-        showHint(`「${file}」为演示占位，正式环境可替换为真实 PDF 下载链接。（${productName}）`);
+        showHint(`「${file}」文件准备中，请联系丝路棉韵获取完整资料。（${productName}）`);
       });
     });
 

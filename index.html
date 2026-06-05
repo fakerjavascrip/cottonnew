@@ -40,24 +40,36 @@
           </div>
           <div class="doc-block">
             <div class="video-wrap">
-              <video
-                class="doc-video"
-                controls
-                playsinline
-                preload="metadata"
-                aria-label="新疆棉全产业链纪实纪录片"
-              >
-                <source src="./data/d304178b57d96aa29fcdcf3e1abd3d09.mp4" type="video/mp4" />
-                您的浏览器不支持 HTML5 视频播放，请升级浏览器后重试。
-              </video>
+              <iframe
+                id="doc-player"
+                src="https://player.bilibili.com/player.html?bvid=BV1Gh411D739&page=1&high_quality=1&danmaku=0&autoplay=0"
+                title="纪录片《棉花》"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
             </div>
-            <div>
-              <h3>从棉田到纺织品</h3>
+            <div class="doc-copy">
+              <h3>纪录片《棉花》</h3>
+              <p class="doc-meta">周浩导演 · 第51届台湾金马奖最佳纪录片 · 历时八年拍摄</p>
               <p>
-                跟随南京师范大学「新棉红途」调研团的镜头，记录新疆长绒棉从四月下地的地膜滴灌、
-                控高塑形的精细农艺，到华芳石河子纺织厂自动化纺纱车间，再到艾德莱斯非遗基地的扎染织造，
-                呈现优质原料如何转化为家居、出行与文创产品。
+                镜头紧贴棉纺产业链，从新疆棉田播种采收，到棉纺厂纺纱织造、制衣车间缝制出口，
+                完整呈现一粒棉花如何穿越绵延五千公里的生产线，展现棉农、纺织女工与产业劳动者的真实生活，
+                解读「中国制造」背后的温度与实力。
               </p>
+              <div class="doc-part-tabs" role="tablist" aria-label="选集">
+                <button type="button" class="doc-part-btn is-active" data-doc-page="1" role="tab" aria-selected="true">上集 · 棉田与采摘</button>
+                <button type="button" class="doc-part-btn" data-doc-page="2" role="tab" aria-selected="false">下集 · 纺织与制衣</button>
+              </div>
+              <aside class="doc-recommend">
+                <p class="doc-recommend-label">新疆棉主题延伸</p>
+                <a
+                  class="doc-recommend-link"
+                  href="https://www.bilibili.com/video/BV1JR4y1A7w6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >央视纪录频道《采棉时节》→</a>
+                <span class="doc-recommend-note">聚焦阿克苏阿瓦提长绒棉产区，记录棉农秋收与机械化采棉</span>
+              </aside>
             </div>
           </div>
         </div>
@@ -66,10 +78,13 @@
       <section id="daily-xinjiang" class="section poster-section" aria-label="今日新疆">
         <div class="container">
           <div class="poster-card" id="daily-poster">
-            <p class="poster-label">今日新疆</p>
-            <p class="poster-title">打卡海报</p>
-            <p class="poster-date" data-poster-date>—</p>
-            <p class="poster-status" data-poster-status>—</p>
+            <img class="poster-bg" data-poster-bg src="./data/溯源图/新疆棉_image1.jpeg" alt="" />
+            <div class="poster-content">
+              <p class="poster-label">今日新疆</p>
+              <p class="poster-title">丝路棉韵</p>
+              <p class="poster-date" data-poster-date>—</p>
+              <p class="poster-status" data-poster-status>—</p>
+            </div>
           </div>
           <div class="poster-info">
             <h3>棉田与新疆风景 · 每日打卡</h3>
@@ -78,7 +93,7 @@
               机械化采收的壮阔场景，配以「丝路棉韵」品牌文案与比赛日期，
               赛前一周自动切换为固定比赛日期海报，便于赛事宣传与社交传播。
             </p>
-            <p>比赛日期：2026年5月30日（可在 assets/js/main.js 中配置）</p>
+            <p>比赛日期：<span data-competition-date>2026年5月30日</span></p>
           </div>
         </div>
       </section>

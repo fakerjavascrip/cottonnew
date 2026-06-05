@@ -67,10 +67,13 @@
       href: `${root}/pages/heritage.html`,
       page: "heritage",
       children: [
+        { label: "纹样里的新疆", href: `${root}/pages/heritage.html#atlas-intro` },
         { label: "非遗历史溯源", href: `${root}/pages/heritage.html#history` },
         { label: "非遗技艺详解", href: `${root}/pages/heritage.html#craft` },
+        { label: "四大经典色系", href: `${root}/pages/heritage.html#colors` },
         { label: "传承匠人故事", href: `${root}/pages/heritage.html#masters` },
         { label: "创新作品展示", href: `${root}/pages/heritage.html#works` },
+        { label: "文化价值", href: `${root}/pages/heritage.html#culture-value` },
       ],
     },
     {

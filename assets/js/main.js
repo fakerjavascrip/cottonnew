@@ -9,23 +9,36 @@
     return `${y}年${m}月${d}日`;
   }
 
+  const POSTER_IMAGES = {
+    daily: "./data/溯源图/新疆棉_image1.jpeg",
+    competition: "./data/溯源图/棉田_image3.jpeg",
+  };
+
   function initPoster() {
     const poster = document.getElementById("daily-poster");
     if (!poster) return;
 
     const dateEl = poster.querySelector("[data-poster-date]");
     const statusEl = poster.querySelector("[data-poster-status]");
+    const bgEl = poster.querySelector("[data-poster-bg]");
+    const competitionDateEl = document.querySelector("[data-competition-date]");
     const now = new Date();
     const diff = COMPETITION_DATE.getTime() - now.getTime();
     const withinWeek = diff > 0 && diff <= ONE_WEEK_MS;
 
+    if (competitionDateEl) {
+      competitionDateEl.textContent = formatDateCN(COMPETITION_DATE);
+    }
+
     if (withinWeek) {
       dateEl.textContent = formatDateCN(COMPETITION_DATE);
-      statusEl.textContent = "赛前一周 · 固定日期海报";
+      statusEl.textContent = "新棉红途 · 赛事打卡";
       poster.classList.add("is-competition-week");
+      if (bgEl) bgEl.src = POSTER_IMAGES.competition;
     } else {
       dateEl.textContent = formatDateCN(now);
-      statusEl.textContent = "今日新疆 · 打卡海报";
+      statusEl.textContent = "玛纳斯棉田 · 每日打卡";
+      if (bgEl) bgEl.src = POSTER_IMAGES.daily;
     }
   }
 
@@ -132,6 +145,27 @@
     });
   }
 
+  function initDocPlayer() {
+    const player = document.getElementById("doc-player");
+    const tabs = document.querySelectorAll("[data-doc-page]");
+    if (!player || !tabs.length) return;
+
+    const base =
+      "https://player.bilibili.com/player.html?bvid=BV1Gh411D739&high_quality=1&danmaku=0&autoplay=0";
+
+    tabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const page = btn.dataset.docPage;
+        player.src = `${base}&page=${page}`;
+        tabs.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle("is-active", active);
+          b.setAttribute("aria-selected", active ? "true" : "false");
+        });
+      });
+    });
+  }
+
   function initHeritageNav() {
     if (document.body.dataset.page !== "heritage") return;
     const navLinks = document.querySelectorAll(".heritage-side-nav a");
@@ -153,6 +187,7 @@
   }
 
   initPoster();
+  initDocPlayer();
   initSmoothScroll();
   initProductsPage();
   initHeritageNav();
