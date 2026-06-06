@@ -24,6 +24,10 @@
   ];
 
   const DOUYIN_SHARE_IMG = `${ROOT}/data/分享/抖音店铺分享图.png`;
+  const PRODUCT_SHARE_IMG = {
+    coaster: `${ROOT}/data/分享/艾德莱斯杯垫溯源分享图.png`,
+    towel: `${ROOT}/data/分享/一次性浴巾溯源分享图.png`,
+  };
 
   const CERT_DIR = `${ROOT}/data/资质`;
   const CERT_REPORT = {
@@ -930,7 +934,13 @@
     </section>`;
   }
 
-  function renderDouyinShare() {
+  function getShareImg(id) {
+    return PRODUCT_SHARE_IMG[id] || DOUYIN_SHARE_IMG;
+  }
+
+  function renderDouyinShare(id, productName) {
+    const shareImg = getShareImg(id);
+    const isProductShare = Boolean(PRODUCT_SHARE_IMG[id]);
     return `<section class="trace-section trace-section-alt" id="douyin-shop">
       <h2 class="trace-section-title">关注抖音店铺</h2>
       <p class="trace-section-lead">保存下方分享图，打开抖音扫一扫，即可找到「丝路棉韵」官方店铺</p>
@@ -938,8 +948,9 @@
         <img
           class="trace-douyin-img"
           id="douyin-share-img"
-          src="${escapeHtml(DOUYIN_SHARE_IMG)}"
-          alt="丝路棉韵抖音店铺分享图，含店铺二维码"
+          src="${escapeHtml(shareImg)}"
+          data-download-name="${escapeHtml(isProductShare ? `丝路棉韵-${productName}-溯源分享图.png` : "丝路棉韵-抖音店铺分享图.png")}"
+          alt="${escapeHtml(isProductShare ? `丝路棉韵${productName}溯源分享图，含产品溯源二维码` : "丝路棉韵抖音店铺分享图，含店铺二维码")}"
           loading="lazy"
         />
         <div class="trace-douyin-steps">
@@ -980,11 +991,11 @@
             ${prod.weight !== "—" ? `<div><dt>毛重</dt><dd>${escapeHtml(prod.weight)}</dd></div>` : ""}
             <div><dt>异纤等级</dt><dd>${escapeHtml(prod.grade)}</dd></div>
           </dl>
-          <div class="trace-qr-inline" aria-label="本页溯源二维码">
+          ${PRODUCT_SHARE_IMG[id] ? "" : `<div class="trace-qr-inline" aria-label="本页溯源二维码">
             <p class="trace-qr-title">扫码进入本页溯源</p>
             <div id="trace-qr-mobile" class="trace-qr-box"></div>
             <p class="trace-qr-hint">扫一扫，打开当前产品溯源页</p>
-          </div>
+          </div>`}
         </div>
       </section>
 
@@ -1020,7 +1031,7 @@
         </article>
       </section>
 
-      ${renderDouyinShare()}
+      ${renderDouyinShare(id, p.name)}
 
       <section class="trace-section trace-actions-section" id="actions">
         <h2 class="trace-section-title">互动功能</h2>
@@ -1088,7 +1099,9 @@
     }
   }
 
-  function renderQrCodes() {
+  function renderQrCodes(id) {
+    if (PRODUCT_SHARE_IMG[id]) return;
+
     if (typeof QRCode === "undefined") {
       console.error("qrcode.min.js not loaded");
       return;
@@ -1186,7 +1199,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "丝路棉韵-抖音店铺分享图.png";
+        a.download = img.dataset.downloadName || "丝路棉韵-抖音店铺分享图.png";
         a.click();
         URL.revokeObjectURL(url);
         showHint("分享图已保存，请打开抖音扫一扫识别图中二维码。");
@@ -1261,7 +1274,12 @@
     }
 
     bindInteractions(product.name);
-    renderQrCodes();
+    renderQrCodes(id);
+
+    const aside = document.getElementById("trace-qr-aside");
+    if (aside && PRODUCT_SHARE_IMG[id]) {
+      aside.hidden = true;
+    }
   }
 
   if (document.readyState === "loading") {
