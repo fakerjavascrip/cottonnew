@@ -24,9 +24,9 @@
   ];
 
   const DOUYIN_SHARE_IMG = `${ROOT}/data/分享/抖音店铺分享图.png`;
+  const DOUYIN_SHOP_IDS = new Set(["tee", "coaster"]);
   const PRODUCT_SHARE_IMG = {
     coaster: `${ROOT}/data/分享/艾德莱斯杯垫溯源分享图.png`,
-    towel: `${ROOT}/data/分享/一次性浴巾溯源分享图.png`,
   };
 
   const CERT_DIR = `${ROOT}/data/资质`;
@@ -934,6 +934,14 @@
     </section>`;
   }
 
+  function hasDouyinShop(id) {
+    return DOUYIN_SHOP_IDS.has(id);
+  }
+
+  function hideHeroQr(id) {
+    return id === "coaster";
+  }
+
   function getShareImg(id) {
     return PRODUCT_SHARE_IMG[id] || DOUYIN_SHARE_IMG;
   }
@@ -991,7 +999,7 @@
             ${prod.weight !== "—" ? `<div><dt>毛重</dt><dd>${escapeHtml(prod.weight)}</dd></div>` : ""}
             <div><dt>异纤等级</dt><dd>${escapeHtml(prod.grade)}</dd></div>
           </dl>
-          ${PRODUCT_SHARE_IMG[id] ? "" : `<div class="trace-qr-inline" aria-label="本页溯源二维码">
+          ${hideHeroQr(id) ? "" : `<div class="trace-qr-inline" aria-label="本页溯源二维码">
             <p class="trace-qr-title">扫码进入本页溯源</p>
             <div id="trace-qr-mobile" class="trace-qr-box"></div>
             <p class="trace-qr-hint">扫一扫，打开当前产品溯源页</p>
@@ -1031,7 +1039,7 @@
         </article>
       </section>
 
-      ${renderDouyinShare(id, p.name)}
+      ${hasDouyinShop(id) ? renderDouyinShare(id, p.name) : ""}
 
       <section class="trace-section trace-actions-section" id="actions">
         <h2 class="trace-section-title">互动功能</h2>
@@ -1100,7 +1108,7 @@
   }
 
   function renderQrCodes(id) {
-    if (PRODUCT_SHARE_IMG[id]) return;
+    if (hideHeroQr(id)) return;
 
     if (typeof QRCode === "undefined") {
       console.error("qrcode.min.js not loaded");
@@ -1277,7 +1285,7 @@
     renderQrCodes(id);
 
     const aside = document.getElementById("trace-qr-aside");
-    if (aside && PRODUCT_SHARE_IMG[id]) {
+    if (aside && hideHeroQr(id)) {
       aside.hidden = true;
     }
   }
